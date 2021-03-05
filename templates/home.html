@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block content %}
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Short URL</th>
+          <th scope="col">Original URL</th>
+          <th scope="col">Click Count</th>
+          <th scope="col">Created on</th>
+          <th scope="col">Last Clicked on</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        {% for link in links %}
+        <tr>
+          <th scope="row">{{ loop.index }}</th>
+          <td><a href="/{{ link.slug }}" target="_blank">{{ link.slug }}</a></td>
+          <td>{{ link.url }}</td>
+          <td>{{ link.count }}</td>
+          <td>{{ link.created_on }}</td>
+          <td>{{ link.last_clicked_on }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+{% endblock content %}
